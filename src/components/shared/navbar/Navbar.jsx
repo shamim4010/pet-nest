@@ -1,14 +1,17 @@
+'use client'
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { FaSignInAlt } from "react-icons/fa"
 
 function Navbar() {
+    const pathName = usePathname();
     const li = <>
-        <Link href="/" className="">Home</Link>
-        <Link href="/allpets">All Pets</Link>
+        <Link href="/" className={`flex flex-col gap-2 ${pathName === '/' && 'border-b border-[#d0bcff]'}`}>Home</Link>
+        <Link href="/allpets" className={`flex flex-col gap-2 ${pathName === '/allpets' && 'border-b border-[#d0bcff]'}`}>All Pets</Link>
     </>
     const liuser = <>
-        <Link href="/">Dashbord</Link>
-        <Link href="/allpets">Profile</Link>
+        <Link href="/dashboard" className={`flex flex-col gap-2 ${pathName === '/dashboard' && 'border-b border-[#d0bcff]'}`}>Dashboard</Link>
+        <Link href="/profile" className={`flex flex-col gap-2 ${pathName === '/profile' && 'border-b border-[#d0bcff]'}`}>Profile</Link>
     </>
     return (
         <div className="navbar glass-level-1 fixed z-1">
@@ -24,8 +27,8 @@ function Navbar() {
                     </ul>
                 </div>
             </div>
-            <div className="navbar-center hidden lg:flex text-white">
-                <ul className="menu menu-horizontal px-1 flex gap-4 text-[#d0bcff]">
+            <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal px-1 flex gap-4 w-full text-[#d0bcff]">
                     {li}
                 </ul>
             </div>
