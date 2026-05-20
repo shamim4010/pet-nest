@@ -18,13 +18,6 @@
 .glass-level-3 {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(64px);
-    border: 1.5px solid;
-    border-image: linear-gradient(to bottom right, #d0bcff, #ffb2b9) 1
-}
-
-.liquid-gradient {
-    background: linear-gradient(45deg, #6d3bd7, #d0bcff, #ffb2b9);
-    background-size: 200% 200%
 }
 
 .text-gradient {

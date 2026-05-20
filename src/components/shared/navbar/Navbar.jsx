@@ -20,7 +20,7 @@ function Navbar() {
     }
 
     const li = <>
-        <Link href="/" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/allpets' ? 'text-[#4ade80]' : 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30] text-[#d0bcff]'}`}>
+        <Link href="/" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/' ? 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30] text-[#d0bcff]' : pathName === '/allpets' && 'text-[#4ade80]'}`}>
             <FaHome className="text-lg" />
             Home
         </Link>

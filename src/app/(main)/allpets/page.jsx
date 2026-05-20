@@ -2,6 +2,7 @@ import AllPets from '@/lib/data'
 import React, { Suspense } from 'react'
 import Loading from '../loading'
 import AllPetss from '@/components/ui/allpets/AllPetss'
+import SearchPets from '@/components/ui/searchpets/SearchPets'
 
 function AllPet() {
     const allPets = AllPets()
@@ -15,6 +16,9 @@ function AllPet() {
                         <h2 className='text-6xl text-white py-4'>Find Your Soul Match</h2>
                         <p className='text-white opacity-80'>248 companions waiting for their forever orbit</p>
                         <div className='py-12'>
+                            <div>
+                                <SearchPets />
+                            </div>
                             <Suspense fallback={<Loading />}>
                             <AllPetss {...{allPets}} />
                             </Suspense>
