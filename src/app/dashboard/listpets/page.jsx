@@ -1,9 +1,9 @@
 import React from 'react'
 
-function page() {
+function ListPets() {
   return (
-    <div>page</div>
+    <div>ListPets</div>
   )
 }
 
-export default page
+export default ListPets
