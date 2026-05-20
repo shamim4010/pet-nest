@@ -1,7 +1,5 @@
-import React from 'react'
-
 async function AllPets() {
-  const res = await fetch('http://localhost:7000/pets', {
+  const res = await fetch(`${process.env.PETS_DATA_URL}`, {
     cache : 'no-store'
   });
   return await res.json();

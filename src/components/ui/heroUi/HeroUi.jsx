@@ -14,10 +14,10 @@ function HeroUi() {
         </div>
         <div className='w-full relative flex justify-center items-center'>
           <div className='absolute top-3 right-40  border border-dashed border-blue-300 p-1'>
-            <Image src={DogImg} width={200} height={300} className='rounded-xl' />
+            <Image src={DogImg} width={200} height={300} alt='DogImg' className='rounded-xl' />
           </div>
           <div className='absolute right-0 border border-dashed border-blue-300 p-1'>
-            <Image src={CatImg} width={200} height={300} className='rounded-xl' />
+            <Image src={CatImg} width={200} height={300} alt='CatImg' className='rounded-xl' />
           </div>
         </div>
       </div>
