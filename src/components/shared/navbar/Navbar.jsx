@@ -20,19 +20,19 @@ function Navbar() {
     }
 
     const li = <>
-        <Link href="/" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:bg-[#d0bcff1c] hover:text-[#d0bcff] hover:scale-[1.03] ${pathName === '/allpets' ? 'text-[#4ade80]' : 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30] text-[#d0bcff]'}`}>
+        <Link href="/" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/allpets' ? 'text-[#4ade80]' : 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30] text-[#d0bcff]'}`}>
             <FaHome className="text-lg" />
             Home
         </Link>
 
-        <Link href="/allpets" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:bg-[#d0bcff1c] hover:text-[#d0bcff] hover:scale-[1.03] ${pathName === '/allpets' ? 'bg-[#4ade80] text-white shadow-lg shadow-[#bcffbc]' : 'text-[#d0bcff]'}`}>
+        <Link href="/allpets" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/allpets' ? 'bg-[#4ade80] text-white shadow-lg shadow-[#bcffbc]' : 'text-[#d0bcff] hover:text-[#d0bcff]'}`}>
             <FaCat />
             All Pets
         </Link>
     </>
 
     const liuser = <>
-        <Link href="/dashboard" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:bg-[#d0bcff1c] hover:text-[#d0bcff] hover:scale-[1.03] ${pathName === '/dashboard' ? 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30]' : 'text-[#d8c9ff]'}`}>
+        <Link href="/dashboard" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/dashboard' ? 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30]' : pathName === '/allpets' && 'text-[#4ade80]'}`}>
             <FaHSquare />            
             Dashboard
         </Link>
@@ -68,7 +68,7 @@ function Navbar() {
 
                     <ul
                         tabIndex={0}
-                        className={`menu dropdown-content mt-4 bg-white/20 backdrop-blur-md rounded-2xl w-120  border border-[#ffffff12] shadow p-4 z-[999] ${pathName === '/allpets' ? 'text-[#4ade80]' : 'text-[#d0bcff]'}`}
+                        className={`menu dropdown-content mt-4 bg-black/40 backdrop-blur-md rounded-2xl w-60  border border-[#ffffff12] shadow p-4 z-[999] ${pathName === '/allpets' ? 'text-[#4ade80]' : 'text-[#d0bcff]'}`}
                     >
                         <div className="flex flex-col gap-4">
                             {li}
