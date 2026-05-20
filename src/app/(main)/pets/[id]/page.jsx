@@ -1,11 +1,23 @@
+import { Suspense } from "react";
+import Loading from "../../loading";
+import SinglePet from "@/components/singlepet/SinglePet";
 
 async function Pets({ params }) {
-    const {name} = await params;
+    const name = await params;
     console.log(name)
+
+    const petP = async () => {
+        const res = await fetch(`${process.env.PETS_DATA_URL}/${name.id}`, {
+            cache : "no-store"
+        });
+        return await res.json();
+    }
+    const pets = petP();
+
     return (
         <div>
             <Suspense fallback={<Loading />} >
-            <SingaleBook {...{booksData, names}} />
+            <SinglePet {...{pets}} />
             </Suspense>
         </div>
     )
