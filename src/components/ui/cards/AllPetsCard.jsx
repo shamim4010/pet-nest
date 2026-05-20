@@ -58,11 +58,13 @@ function AllPetsCard({ pet }) {
                             ${pet.adoptionFee}
                         </span>
                     </div>
-                    <Link href={`/pets/${pet.id}`} className="relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[#16a34a] via-[#22c55e] to-[#4ade80] py-3 text-sm font-bold tracking-wide text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_35px_rgba(34,197,94,0.45)] active:scale-[0.98]">
-                        <span className="relative z-10">
-                            View Details
-                        </span>
-                        <div className="absolute inset-0 translate-y-full bg-white/20 transition-transform duration-500 group-hover:translate-y-0" />
+                    <Link href={`/pets/${pet.id}`}>
+                        <button className="relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[#16a34a] via-[#22c55e] to-[#4ade80] py-3 text-sm font-bold tracking-wide text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_35px_rgba(34,197,94,0.45)] active:scale-[0.98]">
+                            <span className="relative z-10">
+                                View Details
+                            </span>
+                            <div className="absolute inset-0 translate-y-full bg-white/20 transition-transform duration-500 group-hover:translate-y-0" />
+                        </button>
                     </Link>
                 </div>
             </div>
