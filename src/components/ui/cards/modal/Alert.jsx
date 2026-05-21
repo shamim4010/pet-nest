@@ -9,10 +9,16 @@ export function OrderCancel({orderId}) {
     console.log(orderId)
 
     const cencelOrder = async() => {
+        const { data: tokenData } = await authClient.token()
+        console.log(tokenData)
+
+        const token = tokenData?.token
+
         const res = await fetch(`http://localhost:7000/orders/${orderId}`, {
             method: 'DELETE',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${token}`
             }
         })
 

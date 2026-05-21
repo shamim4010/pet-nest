@@ -31,10 +31,16 @@ function ListPet() {
             owner: userInfo?.email
         }
 
+        const { data: tokenData } = await authClient.token()
+        console.log(tokenData)
+
+        const token = tokenData?.token
+
         const res = fetch(`http://localhost:7000/pets`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${token}`
             },
             body: JSON.stringify(petData)
         })

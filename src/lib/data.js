@@ -1,6 +1,11 @@
 async function AllPets() {
+  const { token } = await auth.api.getToken({
+    headers: await headers()
+  })
   const res = await fetch(`${process.env.SERVER_URL}/pets`, {
-    cache: 'no-store'
+    headers: {
+      authorization: `Bearer ${token}`
+    }
   });
   return await res.json();
 }
