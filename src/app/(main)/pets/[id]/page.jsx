@@ -7,7 +7,7 @@ async function Pets({ params }) {
     console.log(name)
 
     const petP = async () => {
-        const res = await fetch(`${process.env.PETS_DATA_URL}/${name.id}`, {
+        const res = await fetch(`${process.env.SERVER_URL}/pets/${name.id}`, {
             cache : "no-store"
         });
         return await res.json();

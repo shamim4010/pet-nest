@@ -1,14 +1,61 @@
 "use client";
 
 import Image from "next/image";
-import { FaBuysellads, FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot } from "react-icons/fa6";
 import { MdVaccines } from "react-icons/md";
 import { FaShieldDog } from "react-icons/fa6";
-import {Envelope} from "@gravity-ui/icons";
-import {Button, Input, Label, Modal, Surface, TextField} from "@heroui/react";
+import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import { FaCat, FaStore } from "react-icons/fa";
+import { authClient } from "@/lib/auth-client";
+import { toast, ToastContainer } from "react-toastify";
+import { redirect } from "next/navigation";
 
 const SinglePetCard = ({ pet }) => {
 
+  const { data: session, isPending } = authClient.useSession();
+  const userInfo = session?.user;
+  console.log('Shamim' , userInfo)
+
+  const toastNotify = () => {
+    toast.warning('Login and Adopt Pets')
+    redirect('/login')
+  }
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const userData = Object.fromEntries(formData.entries());
+    console.log(userData)
+
+    const orderData = {
+      userId: userInfo?.id,
+      petId: pet._id,
+      userEmail: userInfo?.email,
+      name: userInfo?.name,
+      petName: pet.petName,
+      price: pet.adoptionFee,
+      imageUrl: pet.imageUrl,
+      species: pet.species,
+      gender: pet.gender,
+      age: pet.age,
+      userAddress: userData.address,
+      message: userData.message
+    }
+
+    console.log(orderData)
+
+    const res =  fetch(`http://localhost:7000/orders`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(orderData)
+    })
+
+    if(res){
+      toast.success('Order Recive')
+    }
+  }
   return (
     <section className="bg-[#0b0813] py-24 px-5 overflow-hidden">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_.9fr] gap-6">
@@ -106,65 +153,63 @@ const SinglePetCard = ({ pet }) => {
                   Owner Email
                 </p>
                 <p className="mt-1 text-sm font-medium text-[#ece8f7]">
-                  {pet.ownerEmail}
+                  {pet.owner || 'example@gmail.com'}
                 </p>
               </div>
             </div>
           </div>
-          <Modal>
-            <Button className="mt-8 h-16 rounded-2xl bg-gradient-to-r from-[#7c3aed] to-[#c084fc] text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 shadow-xl shadow-violet-900/40"><FaBuysellads /> Adopt Me</Button>
+          {userInfo ? <Modal>
+            <Button className="mt-8 h-16 rounded-2xl bg-gradient-to-r from-[#7c3aed] to-[#c084fc] text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 shadow-xl shadow-violet-900/40"><FaStore /> Adopt Me</Button>
             <Modal.Backdrop>
               <Modal.Container placement="auto">
                 <Modal.Dialog className="sm:max-w-md">
                   <Modal.CloseTrigger />
                   <Modal.Header>
                     <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
-                      <Envelope className="size-5" />
+                      <FaCat className="size-5" />
                     </Modal.Icon>
-                    <Modal.Heading>Contact Us</Modal.Heading>
+                    <Modal.Heading className="flex justify-between items-center">
+                      <span className="text-4xl">Adopt {pet.petName}</span>
+                      <span className="text-4xl bg-gradient-to-r from-[#7c3aed] to-[#c084fc] text-transparent bg-clip-text">${pet.adoptionFee}</span>
+                    </Modal.Heading>
                     <p className="mt-1.5 text-sm leading-5 text-muted">
-                      Fill out the form below and we'll get back to you. The modal adapts automatically
-                      when the keyboard appears on mobile.
+                      {pet.description}
                     </p>
                   </Modal.Header>
                   <Modal.Body className="p-6">
                     <Surface variant="default">
-                      <form className="flex flex-col gap-4">
+                      <form className="flex flex-col gap-4" onSubmit={onSubmit}>
                         <TextField className="w-full" name="name" type="text" variant="secondary">
                           <Label>Name</Label>
-                          <Input placeholder="Enter your name" />
+                          <Input value={userInfo?.name} className="text-indigo-700" disabled />
                         </TextField>
                         <TextField className="w-full" name="email" type="email" variant="secondary">
                           <Label>Email</Label>
-                          <Input placeholder="Enter your email" />
+                          <Input value={userInfo?.email} className="text-indigo-700" disabled />
                         </TextField>
-                        <TextField className="w-full" name="phone" type="tel" variant="secondary">
-                          <Label>Phone</Label>
-                          <Input placeholder="Enter your phone number" />
+                        <TextField className="w-full" name="address" type="text" variant="secondary">
+                          <Label>Address</Label>
+                          <Input placeholder="Enter your phone number" className="text-indigo-700" required/>
                         </TextField>
-                        <TextField className="w-full" name="company" variant="secondary">
-                          <Label>Company</Label>
-                          <Input placeholder="Enter your company name" />
-                        </TextField>
-                        <TextField className="w-full" name="message" variant="secondary">
+                        <TextField className="w-full" name="message" type="textbox" variant="secondary">
                           <Label>Message</Label>
-                          <Input placeholder="Enter your message" />
+                          <Input placeholder="Enter your message" className="text-indigo-700" required />
                         </TextField>
+                        <Modal.Footer>
+                          <Button type="submit" className="mt-8 h-16 rounded-2xl bg-gradient-to-r from-[#7c3aed] to-[#c084fc] text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 shadow-xl shadow-violet-900/40">
+                            Adopt <FaStore />
+                          </Button>
+                        </Modal.Footer>
                       </form>
                     </Surface>
                   </Modal.Body>
-                  <Modal.Footer>
-                    <Button slot="close" variant="secondary">
-                      Cancel
-                    </Button>
-                    <Button slot="close">Send Message</Button>
-                  </Modal.Footer>
                 </Modal.Dialog>
               </Modal.Container>
             </Modal.Backdrop>
-          </Modal>
+          </Modal> : <Button onClick={toastNotify} className="mt-8 h-16 rounded-2xl bg-gradient-to-r from-[#7c3aed] to-[#c084fc] text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 shadow-xl shadow-violet-900/40"><FaStore /> Adopt Me</Button>}
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 };

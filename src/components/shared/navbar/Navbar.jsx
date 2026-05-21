@@ -52,7 +52,7 @@ function Navbar() {
     </>
 
     return (
-        <div className="navbar glass-level-1 fixed z-1">
+        <div className="navbar glass-level-1 fixed z-[999]">
             <div className="navbar-start">
                 <div className="dropdown">
 
@@ -67,7 +67,7 @@ function Navbar() {
                     </div>
 
                     <ul
-                        tabIndex={0}
+                        tabIndex={1}
                         className={`menu dropdown-content mt-4 bg-black/40 backdrop-blur-md rounded-2xl w-60  border border-[#ffffff12] shadow p-4 z-[999] ${pathName === '/allpets' ? 'text-[#4ade80]' : 'text-[#d0bcff]'}`}
                     >
                         <div className="flex flex-col gap-4">
@@ -81,7 +81,7 @@ function Navbar() {
 
                 </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden md:flex">
                 <ul className={`menu menu-horizontal px-1 flex gap-4 w-full ${pathName === '/allpets' ? 'text-[#4ade80]' : 'text-[#d0bcff]'}`}>
                     {li}
                     {userInfo && liuser}
