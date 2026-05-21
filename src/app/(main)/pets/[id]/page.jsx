@@ -1,14 +1,24 @@
 import { Suspense } from "react";
 import Loading from "../../loading";
 import SinglePet from "@/components/singlepet/SinglePet";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 async function Pets({ params }) {
     const name = await params;
     console.log(name)
 
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    console.log('shamim', token)
+
     const petP = async () => {
         const res = await fetch(`${process.env.SERVER_URL}/pets/${name.id}`, {
-            cache : "no-store"
+            headers: {
+                authorization: `Bearer ${token}`
+            }
         });
         return await res.json();
     }
