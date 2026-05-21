@@ -3,6 +3,7 @@ import { Card, CloseButton } from "@heroui/react";
 import React from 'react'
 import { FaClock, FaTruckLoading, FaVenus } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import { MyPetsRemove } from "./modal/MyPetsRemove";
 
 function MyPetsCard({ myPet }) {
 
@@ -71,10 +72,11 @@ function MyPetsCard({ myPet }) {
                             </p>
                             <h4 className="text-white font-medium flex items-center gap-2">
                                 {myPet?.stutas}
-                                
+
                             </h4>
                         </div>
                     </div>
+                    <MyPetsRemove petId={myPet?.userId} />
                 </Card.Footer>
             </div>
         </Card>
