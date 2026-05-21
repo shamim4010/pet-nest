@@ -55,7 +55,7 @@ const SinglePetCard = ({ pet }) => {
 
     if(res){
       toast.success('Order Recive')
-      redirect(`/pets/${pet.id}`)
+      redirect(`/pets/${pet._id}`)
     }
   }
   return (
