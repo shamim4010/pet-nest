@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { FaPaw, FaTrash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
@@ -13,7 +14,7 @@ export function MyPetsRemove({petId}) {
         console.log(tokenData)
 
         const token = tokenData?.token
-        
+
         const res = await fetch(`http://localhost:7000/pets/${petId}`, {
             method: 'DELETE',
             headers: {
@@ -34,7 +35,7 @@ export function MyPetsRemove({petId}) {
         <AlertDialog>
             <Button className="bg-gradient-to-r from-[#7c3aed] to-[#b784ff] text-white rounded-2xl px-6 hover:scale-[1.03] duration-300 flex items-center gap-2">
                 <FaPaw />
-                Cencel Order
+                Remove Listing
             </Button>
             <AlertDialog.Backdrop className="bg-black/10 backdrop-blur-sm">
                 <AlertDialog.Container>

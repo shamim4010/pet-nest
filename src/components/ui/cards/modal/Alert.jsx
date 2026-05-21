@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { FaPaw, FaTrash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
