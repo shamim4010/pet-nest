@@ -39,7 +39,8 @@ const SinglePetCard = ({ pet }) => {
       gender: pet.gender,
       age: pet.age,
       userAddress: userData.address,
-      message: userData.message
+      message: userData.message,
+      stutas: 'Pending'
     }
 
     console.log(orderData)
@@ -54,6 +55,7 @@ const SinglePetCard = ({ pet }) => {
 
     if(res){
       toast.success('Order Recive')
+      redirect(`/pets/${pet.id}`)
     }
   }
   return (

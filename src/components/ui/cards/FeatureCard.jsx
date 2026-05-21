@@ -57,7 +57,7 @@ function FeatureCard({ pet }) {
                             ${pet.adoptionFee}
                         </span>
                     </div>
-                    <Link href={`/pets/${pet.id}`}>
+                    <Link href={`/pets/${pet?._id}`}>
                         <button className="relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[#6d3bd7] via-[#8c5cff] to-[#ffb2b9] py-3 text-sm font-bold tracking-wide text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_35px_rgba(109,59,215,0.45)] active:scale-[0.98]">
                             <span className="relative z-10">
                                 View Details

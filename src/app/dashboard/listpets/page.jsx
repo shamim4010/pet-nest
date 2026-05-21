@@ -1,8 +1,12 @@
-import React from 'react'
+import ListPet from "@/components/ui/listpets/ListPet"
 
 function ListPets() {
   return (
-    <div>ListPets</div>
+    <div className='bg-[url("/noisebg.png")] bg-no-repeat bg-cover p-24'>
+      <div>
+        <ListPet />
+      </div>
+    </div>
   )
 }
 

@@ -4,7 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { FaCat, FaHome, FaHSquare, FaSignInAlt, FaSignOutAlt } from "react-icons/fa"
+import { FaCat, FaFileArchive, FaHome, FaHSquare, FaPaw, FaPlus, FaSignInAlt, FaSignOutAlt } from "react-icons/fa"
 
 function DashBoardNavbar() {
     const pathName = usePathname();
@@ -36,13 +36,18 @@ function DashBoardNavbar() {
         </Link>
 
         <Link href="/dashboard/myrequests" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/dashboard/myrequests' ? 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30]' : 'text-[#d0bcff]'}`}>
-            <FaHSquare />
+            <FaFileArchive />
             My Requests
         </Link>
 
         <Link href="/dashboard/listpets" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/dashboard/listpets' ? 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30]' : 'text-[#d0bcff]'}`}>
-            <FaHSquare />
+            <FaPlus />
             List Pets
+        </Link>
+
+        <Link href="/dashboard/my-listing" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/dashboard/my-listing' ? 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30]' : 'text-[#d0bcff]'}`}>
+            <FaPaw />
+            My Listing
         </Link>
     </>
 
