@@ -2,13 +2,14 @@
 
 import { AlertDialog, Button } from "@heroui/react";
 import { FaPaw, FaTrash } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
 
 export function OrderCancel({orderId}) {
 
     console.log(orderId)
 
     const cencelOrder = async() => {
-        const res = await fetch(`${process.env.SERVER_URL}/orders/${orderId}`, {
+        const res = await fetch(`http://localhost:7000/orders/${orderId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -16,6 +17,11 @@ export function OrderCancel({orderId}) {
         })
 
         const data = await res.json();
+
+        if(data){
+            toast.success('Cencel Successfull')
+        }
+        window.location.reload()
     }
 
     return (
@@ -52,6 +58,7 @@ export function OrderCancel({orderId}) {
                     </AlertDialog.Dialog>
                 </AlertDialog.Container>
             </AlertDialog.Backdrop>
+            <ToastContainer />
         </AlertDialog>
     );
 }

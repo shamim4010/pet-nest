@@ -72,7 +72,7 @@ function AdoptionCard({ order }) {
                                 {order?.stutas}
                             </h4>
                         </div>
-                        <OrderCancel order={order?._id}/>
+                        <OrderCancel orderId={order?._id}/>
                     </div>
                 </Card.Footer>
             </div>
