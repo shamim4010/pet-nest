@@ -2,13 +2,14 @@
 
 import { AlertDialog, Button } from "@heroui/react";
 import { FaPaw, FaTrash } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
 
 export function MyPetsRemove({petId}) {
 
     console.log(petId)
 
     const cencelOrder = async() => {
-        const res = await fetch(`${process.env.SERVER_URL}/pets/${petId}`, {
+        const res = await fetch(`http://localhost:7000/pets/${petId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -16,6 +17,11 @@ export function MyPetsRemove({petId}) {
         })
 
         const data = await res.json();
+
+        if(data){
+            toast.success('Successfully Remove')
+        }
+        window.location.reload()
     }
 
     return (
@@ -52,6 +58,7 @@ export function MyPetsRemove({petId}) {
                     </AlertDialog.Dialog>
                 </AlertDialog.Container>
             </AlertDialog.Backdrop>
+            <ToastContainer />
         </AlertDialog>
     );
 }

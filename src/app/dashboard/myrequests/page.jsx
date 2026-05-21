@@ -1,5 +1,4 @@
-
-import AdoptionCard from '@/components/ui/cards/AdoptionCard';
+import MyRequest from '@/components/ui/myrequests/MyRequest';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 
@@ -27,7 +26,7 @@ async function MyRequests() {
         <div className='flex flex-col gap-8 justify-center items-center my-12'>
           {data.map(order => {
             return (
-              <AdoptionCard key={order?._id} {...{ order }} />
+              <MyRequest key={order?._id} {...{ order }} />
             )
           })}
         </div>
