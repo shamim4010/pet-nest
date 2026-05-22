@@ -1,10 +1,10 @@
 "use client";
 import { Button, Form, SearchField, Spinner } from "@heroui/react";
-import React from "react";
+import React, { useState } from "react";
 
 function SearchPets({ setSearch }) {
-    const [value, setValue] = React.useState("");
-    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [value, setValue] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const MIN_LENGTH = 3;
     const isInvalid = value.length > 0 && value.length < MIN_LENGTH;
     const handleSubmit = (e) => {

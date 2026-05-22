@@ -8,6 +8,14 @@ import { toast, ToastContainer } from "react-toastify";
 function RegisterPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (userData.password !== userData.confirmPassword) {
+      toast.error("Passwords do not match", {
+        position: "top-right",
+        autoClose: 2000,
+      });
+      return;
+    }
+
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
     const { data, error } = await authClient.signUp.email({
@@ -15,7 +23,7 @@ function RegisterPage() {
       email: userData.email,
       image: userData.image,
       password: userData.password,
-      callbackURL: "/auth/login"
+      callbackURL: "/login"
     });
     console.log(data, error)
     if (error) {
@@ -109,6 +117,21 @@ function RegisterPage() {
             <Label className="text-white">Password</Label>
             <Input placeholder="Enter your password" className="border border-[#9b9bdf85] focus:border-[#6161c9]" />
             <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
+            <FieldError />
+          </TextField>
+          <TextField
+            isRequired
+            name="confirmPassword"
+            type="password"
+            validate={(value, formValues) => {
+              if (value !== formValues?.password) {
+                return "Passwords not match";
+              }
+              return null;
+            }}
+          >
+            <Label className="text-white">Confirm Password</Label>
+            <Input placeholder="Confirm password" className="border border-[#9b9bdf85] focus:border-[#6161c9]" />
             <FieldError />
           </TextField>
           <div className="flex flex-col">

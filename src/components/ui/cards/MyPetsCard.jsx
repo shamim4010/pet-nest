@@ -59,13 +59,13 @@ function MyPetsCard({ myPet }) {
                             Adoption Fee
                         </p>
                         <h2 className="text-4xl font-black text-[#c084fc]">
-                            ${myPet?.price}
+                            ${myPet?.adoptionFee}
                         </h2>
                     </div>
                     <div className="flex items-center gap-3">
                         <div className="text-right">
-                            <p className="text-xs text-[#8d84a3]">
-                                Owner Email 
+                            <p className="text-xs text-[#8d84a3] flex flex-col items-center gap-2">
+                                <p>Owner Email</p> 
                                 <span>
                                     {myPet.owner}
                                 </span>

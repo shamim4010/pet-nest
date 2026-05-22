@@ -1,20 +1,12 @@
 
-import Tables from '@/components/ui/dashboardtable/Tables'
+import DashBoard from '@/components/ui/dashboard/DashBoard'
 import React from 'react'
 
 function Dashboard() {
   return (
-    <div className='w-full bg-[url("/noisebg.png")] bg-no-repeat bg-cover p-24'>
-      <div className=" flex flex-col gap-10">
-        <div className="flex justify-between items-end">
-          <div>
-            <h2 className="text-6xl text-white">Dashboard</h2>
-            <p className="text-white opacity-70">Welcome back, Star. Your adoption journey is progressing beautifully.</p>
-          </div>
-        </div>
-        <div>
-          <Tables />
-        </div>
+    <div className='w-full bg-[url("/noisebg.png")] bg-no-repeat bg-cover'>
+      <div className=" w-full bg-black/20 backdrop-blur-2xl flex flex-col gap-10 p-24">
+        <DashBoard />
       </div>
     </div>
   )

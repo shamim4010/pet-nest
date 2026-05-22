@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import Loading from "../../loading";
-import SinglePet from "@/components/singlepet/SinglePet";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import SinglePet from "@/components/ui/singlepet/SinglePet";
 
 export const dynamic = 'force-dynamic';
 
