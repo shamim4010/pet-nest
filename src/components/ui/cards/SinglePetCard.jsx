@@ -167,7 +167,7 @@ const SinglePetCard = ({ pet }) => {
               </div>
             </div>
           </div>
-          {pet.owner === userInfo?.email ? <Link href='/my-listing' className="mt-8 h-16 rounded-2xl bg-gradient-to-r from-[#7c3aed] to-[#c084fc] text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 shadow-xl shadow-violet-900/40"><FaEdit /> Edit Pet Info</Link> :
+          {pet.owner === userInfo?.email ? <Link href={`/dashboard/edit-pet/${pet._id}`} className="mt-8 h-16 rounded-2xl bg-gradient-to-r from-[#7c3aed] to-[#c084fc] text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 shadow-xl shadow-violet-900/40 flex gap-2 justify-center items-center"><FaEdit /> Edit Pet Info</Link> :
             userInfo ? <AdoptModal {...{ pet, onSubmit, userInfo }} /> :
               <Button onClick={toastNotify} className="mt-8 h-16 rounded-2xl bg-gradient-to-r from-[#7c3aed] to-[#c084fc] text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 shadow-xl shadow-violet-900/40"><FaStore /> Adopt Me</Button>}
         </div>
