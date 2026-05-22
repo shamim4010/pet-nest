@@ -1,10 +1,19 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, FieldError, Form, Input, Label, TextArea, TextField } from "@heroui/react";
 import { authClient } from '@/lib/auth-client';
 import { toast, ToastContainer } from 'react-toastify';
 
 function ListPet() {
+    const [url, setUrl] = useState("");
+    const isValidUrl = (url) => {
+        try {
+            new URL(url);
+            return true;
+        } catch {
+            return false;
+        }
+    };
 
     const { data: session, isPending } = authClient.useSession()
     console.log(session)
@@ -13,6 +22,12 @@ function ListPet() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        if (url) {
+            toast.error("Fix Image URL first");
+            return;
+        }
+
         const formData = new FormData(e.currentTarget);
         const userData = Object.fromEntries(formData.entries());
         const petData = {
@@ -36,7 +51,7 @@ function ListPet() {
 
         const token = tokenData?.token
 
-        const res = fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -94,7 +109,20 @@ function ListPet() {
                     <Label className="text-[#d0bcff] mb-2">
                         Image URL
                     </Label>
-                    <Input placeholder="https://example.com/pet.jpg" className="bg-[#22192f] border border-[#ffffff10] rounded-2xl text-white" />
+                    <Input placeholder="https://example.com/pet.jpg" className="bg-[#22192f] border border-[#ffffff10] rounded-2xl text-white"
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            if (value && !isValidUrl(value)) {
+                                setUrl("Please enter a valid URL");
+                            } else {
+                                setUrl("");
+                            }
+                        }}/>
+
+                    {url && (
+                        <p className="text-red-400 text-sm mt-1">{url}</p>
+                    )}
+
                     <FieldError className="text-red-400 text-sm mt-1" />
                 </TextField>
                 <TextField isRequired name="healthStatus">
