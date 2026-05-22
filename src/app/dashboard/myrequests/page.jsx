@@ -21,7 +21,7 @@ async function MyRequests() {
 
   console.log('Requst page', token)
 
-  const res = await fetch(`${NEXT_PUBLIC_SERVER_URL}/orders/${userInfo?.id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/orders/${userInfo?.id}`, {
     headers: {
       authorization: `Bearer ${token}`
     }

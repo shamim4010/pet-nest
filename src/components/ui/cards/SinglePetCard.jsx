@@ -50,7 +50,7 @@ const SinglePetCard = ({ pet }) => {
 
     const token = tokenData?.token
 
-    const res = fetch(`${NEXT_PUBLIC_SERVER_URL}/orders`, {
+    const res = fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/orders`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

@@ -9,7 +9,7 @@ function AllPetss({ allPets }) {
     <div className='grid place-items-center sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 py-12 gap-8'>
       {allPet.map(pet => {
         return (
-          <AllPetsCard key={pet.id} {...{ pet }} />
+          <AllPetsCard key={pet?.id} {...{ pet }} />
         )
       })}
     </div>

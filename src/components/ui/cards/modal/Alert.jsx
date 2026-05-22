@@ -15,7 +15,7 @@ export function OrderCancel({orderId}) {
 
         const token = tokenData?.token
 
-        const res = await fetch(`${NEXT_PUBLIC_SERVER_URL}/orders/${orderId}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/orders/${orderId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
