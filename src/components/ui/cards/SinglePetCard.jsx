@@ -14,7 +14,7 @@ const SinglePetCard = ({ pet }) => {
 
   const { data: session, isPending } = authClient.useSession();
   const userInfo = session?.user;
-  console.log('Shamim' , userInfo)
+  console.log('Shamim', userInfo)
 
   const toastNotify = () => {
     toast.warning('Login and Adopt Pets')
@@ -45,15 +45,21 @@ const SinglePetCard = ({ pet }) => {
 
     console.log(orderData)
 
-    const res =  fetch(`${process.env.SERVER_URL}/orders`, {
+    const { data: tokenData } = await authClient.token()
+    console.log(tokenData)
+
+    const token = tokenData?.token
+
+    const res = fetch(`${process.env.SERVER_URL}/orders`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        authorization: `Bearer ${token}`
       },
       body: JSON.stringify(orderData)
     })
 
-    if(res){
+    if (res) {
       toast.success('Order Recive')
       redirect(`/pets/${pet._id}`)
     }
@@ -191,7 +197,7 @@ const SinglePetCard = ({ pet }) => {
                         </TextField>
                         <TextField className="w-full" name="address" type="text" variant="secondary">
                           <Label>Address</Label>
-                          <Input placeholder="Enter your phone number" className="text-indigo-700" required/>
+                          <Input placeholder="Enter your phone number" className="text-indigo-700" required />
                         </TextField>
                         <TextField className="w-full" name="message" type="textbox" variant="secondary">
                           <Label>Message</Label>

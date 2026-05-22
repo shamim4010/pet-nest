@@ -13,9 +13,17 @@ async function MyListing() {
 
     const userInfo = session?.user
 
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
     console.log(userInfo?.id)
 
-    const res = await fetch(`${process.env.SERVER_URL}/pets`);
+    const res = await fetch(`${process.env.SERVER_URL}/pets`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
     const data = await res.json();
 
     const userPets = data.filter(item => userInfo.id === item.userId)

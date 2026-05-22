@@ -12,8 +12,15 @@ async function MyRequests() {
 
   const userInfo = session?.user
 
+  const { token } = await auth.api.getToken({
+    headers: await headers()
+  })
 
-  const res = await fetch(`${process.env.SERVER_URL}/orders/${userInfo?.id}`);
+  const res = await fetch(`${process.env.SERVER_URL}/orders/${userInfo?.id}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
   const data = await res.json();
 
   console.log(data)
