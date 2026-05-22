@@ -45,7 +45,7 @@ const SinglePetCard = ({ pet }) => {
 
     console.log(orderData)
 
-    const res =  fetch(`http://localhost:7000/orders`, {
+    const res =  fetch(`${process.env.SERVER_URL}/orders`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

@@ -14,7 +14,7 @@ function FeaturedPets({ petsP }) {
                 <h2 className='text-6xl text-white py-4'>Featured Stars</h2>
                 <p className='text-white opacity-80'>Discover our most remarkable companions. Each pet is curated for their unique personality, waiting to find their forever stage in your home.</p>
                 <div className='grid place-items-center sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 py-12 gap-8'>
-                    {allPets?.slice(0, 6).map(pet => {
+                    {allPets.slice(0, 6).map(pet => {
                         return (
                             <FeatureCard key={pet.id} {...{ pet }} />
                         )

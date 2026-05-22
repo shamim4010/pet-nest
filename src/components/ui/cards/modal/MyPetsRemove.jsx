@@ -15,7 +15,7 @@ export function MyPetsRemove({petId}) {
 
         const token = tokenData?.token
 
-        const res = await fetch(`http://localhost:7000/pets/${petId}`, {
+        const res = await fetch(`${process.env.SERVER_URL}/pets/${petId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

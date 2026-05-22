@@ -36,7 +36,7 @@ function ListPet() {
 
         const token = tokenData?.token
 
-        const res = fetch(`http://localhost:7000/pets`, {
+        const res = fetch(`${process.env.SERVER_URL}/pets`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

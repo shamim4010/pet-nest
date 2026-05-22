@@ -15,7 +15,7 @@ export function OrderCancel({orderId}) {
 
         const token = tokenData?.token
 
-        const res = await fetch(`http://localhost:7000/orders/${orderId}`, {
+        const res = await fetch(`${process.env.SERVER_URL}/orders/${orderId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
