@@ -15,19 +15,14 @@ export function MyPetsRemove({petId}) {
 
         const token = tokenData?.token
 
-        const res = await fetch(`${process.env.SERVER_URL}/pets/${petId}`, {
+        const res = await fetch(`https://petnest-server-six.vercel.app/pets/${petId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
                 authorization: `Bearer ${token}`
             }
         })
-
         const data = await res.json();
-
-        if(data){
-            toast.success('Successfully Remove')
-        }
         window.location.reload()
     }
 

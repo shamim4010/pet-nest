@@ -15,7 +15,7 @@ export function OrderCancel({orderId}) {
 
         const token = tokenData?.token
 
-        const res = await fetch(`${process.env.SERVER_URL}/orders/${orderId}`, {
+        const res = await fetch(`https://petnest-server-six.vercel.app/orders/${orderId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
