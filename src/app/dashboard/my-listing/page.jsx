@@ -20,7 +20,7 @@ async function MyListing() {
 
     console.log(userInfo?.id)
 
-    const res = await fetch(`${process.env.SERVER_URL}/pets`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets`, {
         headers: {
             authorization: `Bearer ${token}`
         }

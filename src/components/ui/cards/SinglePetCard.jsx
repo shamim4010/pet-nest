@@ -50,7 +50,7 @@ const SinglePetCard = ({ pet }) => {
 
     const token = tokenData?.token
 
-    const res = fetch(`https://petnest-server-six.vercel.app/orders`, {
+    const res = fetch(`${NEXT_PUBLIC_SERVER_URL}/orders`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

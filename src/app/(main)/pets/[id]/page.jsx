@@ -17,7 +17,7 @@ async function Pets({ params }) {
     console.log('shamim', token)
 
     const petP = async () => {
-        const res = await fetch(`${process.env.SERVER_URL}/pets/${name.id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets/${name.id}`, {
             headers: {
                 authorization: `Bearer ${token}`
             }

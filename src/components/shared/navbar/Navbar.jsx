@@ -4,7 +4,8 @@ import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { FaCat, FaHome, FaHSquare, FaSignInAlt, FaSignOutAlt } from "react-icons/fa"
+import { FaCat, FaHome, FaSignInAlt, FaSignOutAlt } from "react-icons/fa"
+import { MdSpaceDashboard } from "react-icons/md";
 
 function Navbar() {
     const pathName = usePathname();
@@ -35,7 +36,7 @@ function Navbar() {
 
     const liuser = <>
         <Link href="/dashboard" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/dashboard' ? 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30]' : pathName === '/allpets' && 'text-[#4ade80]'}`}>
-            <FaHSquare />            
+            <MdSpaceDashboard />            
             Dashboard
         </Link>
     </>

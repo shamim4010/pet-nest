@@ -36,7 +36,7 @@ function ListPet() {
 
         const token = tokenData?.token
 
-        const res = fetch(`https://petnest-server-six.vercel.app/pets`, {
+        const res = fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pets`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

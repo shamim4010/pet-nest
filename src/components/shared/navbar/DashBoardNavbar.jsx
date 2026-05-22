@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { FaCat, FaFileArchive, FaHome, FaHSquare, FaPaw, FaPlus, FaSignInAlt, FaSignOutAlt } from "react-icons/fa"
+import { MdSpaceDashboard } from "react-icons/md";
 
 function DashBoardNavbar() {
     const pathName = usePathname();
@@ -33,7 +34,7 @@ function DashBoardNavbar() {
         </Link>
 
         <Link href="/dashboard" className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:scale-[1.03] ${pathName === '/dashboard' ? 'bg-[#d0bcff] text-black shadow-lg shadow-[#d0bcff30]' : pathName === '/allpets' && 'text-[#4ade80]'}`}>
-            <FaHSquare />
+            <MdSpaceDashboard />
             Dashboard
         </Link>
 
