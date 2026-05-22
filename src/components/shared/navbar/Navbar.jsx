@@ -3,11 +3,13 @@ import Loading from "@/app/(main)/loading";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { FaCat, FaHome, FaHSquare, FaSignInAlt, FaSignOutAlt } from "react-icons/fa"
 
 function Navbar() {
     const pathName = usePathname();
+
+    const router = useRouter()
 
     const { data: session, isPending } = authClient.useSession()
     console.log(session)
@@ -16,7 +18,7 @@ function Navbar() {
 
     const logOut = async () => {
         await authClient.signOut();
-        redirect('/login')
+        router.replace("/")
     }
 
     const li = <>
