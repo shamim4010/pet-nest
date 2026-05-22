@@ -1,9 +1,11 @@
 
-import { Card, CloseButton } from "@heroui/react";
+import { Card } from "@heroui/react";
 import React from 'react'
-import { FaClock, FaTruckLoading, FaVenus } from "react-icons/fa";
+import { FaClock, FaVenus } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MyPetsRemove } from "./modal/MyPetsRemove";
+import Link from "next/link";
+import { BiEdit } from "react-icons/bi";
 
 function MyPetsCard({ myPet }) {
 
@@ -32,10 +34,10 @@ function MyPetsCard({ myPet }) {
                                     {myPet?.message}
                                 </Card.Description>
                             </div>
-                            <CloseButton
-                                aria-label="Close banner"
-                                className="bg-[#ffffff10] text-white hover:bg-red-500 hover:text-white duration-300"
-                            />
+                            <Link href={`/dashboard/edit-pet/${myPet._id}`} className="bg-gradient-to-r from-[#7c3aed] to-[#b784ff] text-white rounded-4xl px-2 py-2 hover:scale-[1.03] duration-300 flex items-center gap-2">
+                                <BiEdit /> Edit Pet
+                            </Link>
+                            
                         </div>
                     </Card.Header>
                     <div className="flex flex-wrap gap-3 mt-6">
