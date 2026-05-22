@@ -4,6 +4,8 @@ import SinglePet from "@/components/singlepet/SinglePet";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
+export const dynamic = 'force-dynamic';
+
 async function Pets({ params }) {
     const name = await params;
     console.log(name)

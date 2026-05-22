@@ -116,7 +116,7 @@ function RegisterPage() {
               <Check />
               Register
             </Button>
-            <p className="text-gray-500/90 text-sm mt-4">Don't have an account? <Link href="/login" className="text-indigo-400 hover:underline">Login</Link></p>
+            <p className="text-gray-500/90 text-sm mt-4">Don&apos;t have an account? <Link href="/login" className="text-indigo-400 hover:underline">Login</Link></p>
           </div>
         </Form>
       </div>

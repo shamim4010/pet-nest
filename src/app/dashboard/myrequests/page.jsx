@@ -2,6 +2,8 @@ import MyRequest from '@/components/ui/myrequests/MyRequest';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 
+export const dynamic = 'force-dynamic';
+
 async function MyRequests() {
 
   const session = await auth.api.getSession({

@@ -101,7 +101,7 @@ function LoginPage() {
               <Check />
               Login
             </Button>
-            <p className="text-gray-500/90 text-sm mt-4">Don't have an account? <Link href="/register" className="text-indigo-400 hover:underline">Register</Link></p>
+            <p className="text-gray-500/90 text-sm mt-4">Don&apos;t have an account? <Link href="/register" className="text-indigo-400 hover:underline">Register</Link></p>
           </div>
         </Form>
       </div>

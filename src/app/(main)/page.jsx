@@ -4,6 +4,8 @@ import AllPets from '@/lib/data'
 import React, { Suspense } from 'react'
 import Loading from './loading';
 
+export const dynamic = 'force-dynamic';
+
 function Home() {
   const petsP = AllPets();
   console.log(petsP)

@@ -4,6 +4,8 @@ import Loading from '../loading'
 import AllPetss from '@/components/ui/allpets/AllPetss'
 import SearchPets from '@/components/ui/searchpets/SearchPets'
 
+export const dynamic = 'force-dynamic';
+
 function AllPet() {
     const allPets = AllPets()
 
